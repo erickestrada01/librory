@@ -10,7 +10,11 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Route::group(array('prefix' => 'courses'), function(){
+    Route::get('/list' , ['as' => 'courses.list' , 'uses' => 'CourseController@getCourses']);
+    Route::get('/add' , ['as' => 'courses.add' , 'uses' => 'CourseController@addCourse']);
+    Route::get('/details/{id}' , ['as' => 'courses.details' , 'uses' => 'CourseController@getCourseDetails']);
+});
 
 /*
 |--------------------------------------------------------------------------

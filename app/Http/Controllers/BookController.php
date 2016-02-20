@@ -7,17 +7,20 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use DB;
+
 use App\Book as Book;
 
 class BookController extends Controller
 {
 
     public function __construct() {
-
+        $this->Middleware('auth');
     }
 
     public function getBooks() {
         $vars = [
+            'pageTitle' => 'Books',
             'books' => Book::all(),
         ];
         return view('books.list', $vars);
@@ -32,14 +35,14 @@ class BookController extends Controller
         return view('books.add', $vars);
     }
 
-    public function postNewBook() {
+    public function postNewBook(Request $request) {
         $vars = [
             'pageTitle' => 'Add Book',
         ];
         $data = [
-            'title' => $this->request->input('ab-title'),
-            'author' => $this->request->input('ab-author'),
-            'publishing_year' => $this->request->input('ab-publishing_year'),
+            'title' => $request->input('ab-title'),
+            'author' => $request->input('ab-author'),
+            'publishing_year' => $request->input('ab-publishing_year'),
         ];
         DB::table('books')->insert($data);
         return redirect(route('books.list'))->withSuccess('Nadungag na choi!');

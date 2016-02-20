@@ -11,17 +11,6 @@
 |
 */
 
-/*  --------------------------------------------------------------------------
-    Books
-    --------------------------------------------------------------------------*/
-Route::group(array('prefix' => 'books'), function() {
-
-    Route::get('/list', ['as' => 'books.list', 'uses' => 'BookController@getBooks']);
-    Route::get('/add', ['as' => 'books.add', 'uses' => 'BookController@getNewBook']);
-    Route::post('/add', ['as' => 'books.add', 'uses' => 'BookController@postNewBook']);
-    Route::get('/details/{id}', ['as' => 'books.details', 'uses' => 'BookController@getBookDetails']);
-
-});
 
 /*  --------------------------------------------------------------------------
     Courses
@@ -49,4 +38,17 @@ Route::group(['middleware' => 'web'], function () {
         return view('welcome');
     });
     Route::get('/home', 'HomeController@index');
+
+    /*  --------------------------------------------------------------------------
+        Books
+        --------------------------------------------------------------------------*/
+    Route::group(array('prefix' => 'books'), function() {
+
+        Route::get('/list', ['as' => 'books.list', 'uses' => 'BookController@getBooks']);
+        Route::get('/add', ['as' => 'books.add', 'uses' => 'BookController@getNewBook']);
+        Route::post('/add', ['as' => 'books.add', 'uses' => 'BookController@postNewBook']);
+        Route::get('/details/{id}', ['as' => 'books.details', 'uses' => 'BookController@getBookDetails']);
+
+    });
+
 });

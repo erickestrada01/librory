@@ -11,7 +11,9 @@
 |
 */
 
-// BOOKS
+/*  --------------------------------------------------------------------------
+    Books
+    --------------------------------------------------------------------------*/
 Route::group(array('prefix' => 'books'), function() {
 
     Route::get('/list', ['as' => 'books.list', 'uses' => 'BookController@getBooks']);
@@ -19,6 +21,15 @@ Route::group(array('prefix' => 'books'), function() {
     Route::post('/add', ['as' => 'books.add', 'uses' => 'BookController@postNewBook']);
     Route::get('/details/{id}', ['as' => 'books.details', 'uses' => 'BookController@getBookDetails']);
 
+});
+
+/*  --------------------------------------------------------------------------
+    Courses
+    --------------------------------------------------------------------------*/
+Route::group(array('prefix' => 'courses'), function(){
+    Route::get('/list' , ['as' => 'courses.list' , 'uses' => 'CourseController@getCourses']);
+    Route::get('/add' , ['as' => 'courses.add' , 'uses' => 'CourseController@addCourse']);
+    Route::get('/details/{id}' , ['as' => 'courses.details' , 'uses' => 'CourseController@getCourseDetails']);
 });
 
 /*

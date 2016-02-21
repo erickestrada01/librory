@@ -57,4 +57,16 @@ class BookController extends Controller
         return redirect(route('books.list'))->withSuccess('Nadungag na choi!');
     }
 
+    public function getBookDetails($bookID) {
+
+        $book = Book::find($bookID);
+
+        $vars = [
+            'pageTitle' => $book->title,
+            'book' => $book,
+        ];
+
+        return view('books.details', $vars);
+    }
+
 }

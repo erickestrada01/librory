@@ -25,7 +25,11 @@
                         </thead>
                     @foreach($books as $book)
                         <tr>
-                            <td>{{ $book->title }}</td>
+                            <td>
+                                <a href="{{ route('books.details', ['bookID' => $book->id]) }}" title="">
+                                    <strong>{{ $book->title }}</strong>
+                                </a>
+                            </td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->publishing_year }}</td>
                         </tr>

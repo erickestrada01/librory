@@ -36,15 +36,24 @@ class BookController extends Controller
     }
 
     public function postNewBook(Request $request) {
+
+        $this->validate($request, [
+            'ab-title' => 'required',
+            'ab-author' => 'required',
+            'ab-publishing_year' => 'required|integer',
+        ]);
+
         $vars = [
             'pageTitle' => 'Add Book',
         ];
+
         $data = [
             'title' => $request->input('ab-title'),
             'author' => $request->input('ab-author'),
             'publishing_year' => $request->input('ab-publishing_year'),
         ];
         DB::table('books')->insert($data);
+
         return redirect(route('books.list'))->withSuccess('Nadungag na choi!');
     }
 

@@ -3,6 +3,19 @@
 @section('content')
 <div class="container">
     <div class="row">
+
+        @if (count($errors) > 0)
+        <div class="col-md-12">
+            <div class="alert alert-warning">
+                <ul style="padding-left: 20px;">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+        @endif
+
         <div class="col-md-2">
             <ul class="list-group">
                 <li class="list-group-item"><a href="{{ route('books.list') }}">Books</a></li>

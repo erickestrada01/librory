@@ -51,4 +51,16 @@ Route::group(['middleware' => 'web'], function () {
 
     });
 
+    /*  --------------------------------------------------------------------------
+        Books
+        --------------------------------------------------------------------------*/
+    Route::group(array('prefix' => 'authors'), function() {
+
+        Route::get('/list', ['as' => 'authors.list', 'uses' => 'AuthorController@getAuthors']);
+        Route::get('/add', ['as' => 'authors.add', 'uses' => 'AuthorController@getNewAuthor']);
+        Route::post('/add', ['as' => 'authors.add', 'uses' => 'AuthorController@postNewAuthor']);
+        Route::get('/details/{id}', ['as' => 'authors.details', 'uses' => 'AuthorController@getAuthorDetails']);
+
+    });
+
 });

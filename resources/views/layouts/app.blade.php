@@ -14,6 +14,7 @@
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/datepicker.css') }}" />
 
     <style>
         body {
@@ -50,6 +51,7 @@
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     @if (!Auth::guest())
                     <li><a href="{{ route('books.list') }}">Books</a></li>
+                    <li><a href="{{ route('authors.list') }}">Authors</a></li>
                     @endif
                 </ul>
 
@@ -80,6 +82,13 @@
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
+    <script>
+    $(function() {
+        $('#aa-birthdate').datepicker();
+    });
+    </script>
 </body>
 </html>

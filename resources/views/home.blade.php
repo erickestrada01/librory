@@ -8,7 +8,10 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in! 1
+                    You are logged in! 
+                    <pre>
+                        <?php var_dump(parse_url(Request::url())); ?>
+                    </pre>
                 </div>
             </div>
         </div>

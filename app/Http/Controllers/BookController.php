@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use DB;
 
 use App\Book as Book;
+use App\Author as Author;
 
 class BookController extends Controller
 {
@@ -30,6 +31,7 @@ class BookController extends Controller
 
         $vars = [
             'pageTitle' => 'Add Book',
+            'authors' => Author::all(),
         ];
 
         return view('books.add', $vars);

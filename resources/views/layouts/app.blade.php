@@ -79,6 +79,41 @@
 
     @yield('content')
 
+    <?php
+        // $parsedurl = parse_url(Request::url());
+        // $tempURL = explode('/' , ltrim($parsedurl['path'], '/'));
+        function in_url($param) {
+            $bool = true;
+            $parsedurl = parse_url(Request::url());
+            $tempURL = explode('/' , ltrim($parsedurl['path'], '/'));
+            $paths = explode('.', $param);
+
+            if ($parsedurl['host'] == 'localhost') {
+                for ($i=0; $i < count($tempURL); $i++) {
+                    if ($tempURL == 'public') {
+                        unset($tempURL[$i]);
+                        break;
+                    }
+                    unset($tempURL[$i]);
+                }
+            }
+
+            $count = 0;
+            foreach ($tempURL as $url) {
+                if ($url != $paths[$count]) {
+                    $bool = false;
+                }
+                $count++;
+            }
+
+            return $bool;
+        }
+    ?>
+    <pre>
+        <?php // var_dump($tempURL); ?>
+        <?php var_dump(in_url('books.list')); ?>
+    </pre>
+
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
